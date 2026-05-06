@@ -7,6 +7,11 @@ import DetailCard from './Components/DetailCard';
 
 function App() {
 
+const [display,setDisplay]=React.useState(false)
+  
+  const screenChange=React.useEffect(()=>{
+     setDisplay(!display)
+  },[])
 
   const [allCalls, setAllCalls] = React.useState(Data);
 
@@ -16,6 +21,7 @@ function App() {
     return (
 
       <MainCard
+      
       key={mock.id}
         direction={mock.direction}
         from={mock.from}
@@ -26,11 +32,14 @@ function App() {
         status={mock.call_type}
         id={mock.id}
         deleteCall={deleteCall}
+       change={screenChange}
+       
+       
       />
     );
   });
 
-  const detail = Data.map((mock) => {
+  const Detail = Data.map((mock) => {
     const [date, hour] = mock.created_at.replace("Z", "").split("T");
     return (
       <DetailCard
@@ -55,15 +64,13 @@ function App() {
     const updateCalls = allCalls.filter((item) => item.id !== id);
     setAllCalls(updateCalls);
   }
-  let page = true
-  function showPage() {
-    page = !page
-  }
 
+  
   return (
     <div className="App">
       <Header />
-      page?{Main}:{detail}
+      {display? <h3>Activity feed</h3>:""}
+      {display? Main:Detail}
 
     </div>
   );

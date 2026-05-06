@@ -7,14 +7,110 @@
 
 .mainCard{
   display: flex;
+  border:2px solid rgba(222, 214, 214, 0.469);
+  margin-left: 60px;
+  margin-top: 20px;
+  margin-right: 60px;
 }
 p{margin-right: 15px;}
 
 
 .main--Card{
   display: flex;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+h3{
+  margin-left: 60px;
 }
 
 .body{
   margin: 0;
+}
+
+.status-card{
+ display: flex;
+ flex-direction: column;
+ gap: 7px;
+ margin-right: 20px;
+}
+
+.inbound{
+  color: rgb(42, 42, 226);
+}
+
+.outbound{
+  color: blueviolet;
+}
+
+.missed{
+  display: flex;
+  color: rgb(215, 28, 28);
+  font-size: 14px;
+ border: 2px none;
+ background-color:rgb(242, 171, 171) ;
+ justify-content: center;
+ align-items: center;
+ border-radius: 8px;
+}
+
+.answered{
+  color: rgb(3, 199, 3);
+  font-size: 15px;
+  display: flex;
+   border: 2px none;
+ background-color:rgb(228, 252, 228) ;
+ justify-content: center;
+ align-items: center;
+ border-radius: 8px;
+
+}
+
+.voicemail{
+  color:rgb(221, 221, 2);
+  font-size: 15px;
+  display: flex;
+   border: 2px none;
+ background-color: rgb(253, 253, 203);
+ justify-content: center;
+ align-items: center;
+ border-radius: 8px;
+}
+
+.answered2{
+  color: green;
+}
+
+.arcBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  margin-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.from{
+  margin-left: 20px;
+}
+
+.date{
+margin-left: 50px;
+font-size: 15px;
+color: gray;
+}
+
+.hour{
+   display: flex;
+ flex-direction: column;
+ gap: 7px;
+ margin-right: 20px;
+ font-size:15px;
+ margin-left: 20px;
+ color:grey;
+ 
 }

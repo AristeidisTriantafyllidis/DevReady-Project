@@ -3,18 +3,28 @@ import React from "react";
 
 
 export default function MainCard(props) {
-    
+
+
   return (
+
     <div className="mainCard" >
-        <div className="main--Card" onClick={() => props.showPage(props.id)}>
-      <p>{props.direction} {props.status}</p>
-      <p>{props.from}</p>
-      <p>{props.to}</p>
-      <p>{props.date}</p>
-      <p>{props.hour}</p>
-      <p>{props.duration > 0 ? `${props.duration}s` : ""}</p>
+    
+      <div className="main--Card" onClick={() => props.change()}>
+        <div className="status-card">
+        <span className={props.direction}>{props.direction == "inbound" ? "↙️ " : "↗️ "}{props.direction}</span>
+        <span className={props.status}> {props.status}</span>
+        </div>
+        <p className="from">{props.from}</p>
+        <p>{props.to}</p>
+        <p className="date">{props.date}</p>
+        <div className="hour">
+        <span>{props.hour}</span>
+        <span>{props.duration > 0 ? `${props.duration}s` : ""}</span>
       </div>
-      <button onClick={() => props.deleteCall(props.id)}>Archive</button>
+      </div>
+      <button className="arcBtn" onClick={() => props.deleteCall(props.id)}>Archive</button>
     </div>
+  
+
   );
 }

@@ -9,7 +9,7 @@ export default function DetailCard(props){
 <p> Direction {props.direction}</p>
 <p>From {props.from} </p>
 <p>To {props.to}</p>
-<p>Type {props.status}</p>
+<span>Type<p className={props.status}> {props.status}</p></span>
 <p>Duration {props.duration}s</p>
 <p>Date {props.date},{props.hour}</p>
 <p>Archived {props.archive?"Yes":"No"}</p>
