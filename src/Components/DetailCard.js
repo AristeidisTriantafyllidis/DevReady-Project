@@ -1,12 +1,12 @@
 import React from "react";
-import Data from "./Data";
+
 
 
 export default function DetailCard(props){
 
     return(
 <div>
-    <button onClick={() => props.switch()}>Back to calls</button>
+    <button onClick={() => props.switch(props.id)}>Back to calls</button>
     <h2>Call Details</h2>
 <p> Direction {props.direction}</p>
 <p>From {props.from} </p>
@@ -16,7 +16,7 @@ export default function DetailCard(props){
 <p>Date {props.date},{props.hour}</p>
 <p>Archived {props.archive?"Yes":"No"}</p>
 <p>{props.notes}</p>
-<p></p>
+
 </div> 
 
 )

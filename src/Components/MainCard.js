@@ -9,8 +9,9 @@ export default function MainCard(props) {
   return (
 
     <div className="mainCard" >
+   
 
-      <div className="main--Card" onClick={() => props.switch()}>
+      <div className="main--Card" onClick={() => props.switch(props.id)}>
         <div className="status-card">
           <span className={props.direction}>{props.direction == "inbound" ? "↙️ " : "↗️ "}{props.direction}</span>
           <span className={props.status}> {props.status}</span>

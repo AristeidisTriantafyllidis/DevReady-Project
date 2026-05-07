@@ -9,8 +9,13 @@ function App() {
 
   const [display, setDisplay] = React.useState(true)
   const [allCalls, setAllCalls] = React.useState(Data);
+  const [idCall, seIdCall] = React.useState(1)
 
-  const toggleScreen = () => { setDisplay(!display) }
+  function toggleScreen(id) {
+    setDisplay(!display)
+    seIdCall(id)
+    }
+
   const Main = allCalls.map((mock) => {
     const [date, hour] = mock.created_at.replace("Z", "").split("T");
     return (
@@ -34,25 +39,26 @@ function App() {
     );
   });
 
-  const Detail = Data.map((mock) => {
-    const [date, hour] = mock.created_at.replace("Z", "").split("T");
-    return (
+   const Detail = 
+  //  const [date, hour] = mock.created_at.replace("Z", "").split("T");
 
-      <DetailCard
-        key={mock.id}
-        direction={mock.direction}
-        from={mock.from}
-        to={mock.to}
-        status={mock.call_type}
-        duration={mock.duration}
-        date={date}
-        hour={hour}
-        archive={mock.is_archived}
-        notes={mock.notes ? mock.notes[0].content : "No notes for this call"}
+ 
+     <DetailCard
+
+         key={Data[Number(idCall)-1].direction}
+         direction={Data[Number(idCall)-1].direction}
+         id={idCall}
+          from={Data[Number(idCall)-1].from}
+         to={Data[Number(idCall)-1].to}
+         status={Data[Number(idCall)-1].call_type}
+         duration={Data[Number(idCall)-1].duration}
+         date={Data[Number(idCall)-1].created_at}
+        // hour={hour}
+         archive={Data[Number(idCall)-1].is_archived}
+         notes={Data[Number(idCall)-1].notes ? Data[Number(idCall)-1].notes[0].content : "No notes for this call"}
         switch={toggleScreen}
       />
-    );
-  });
+
 
 
 
