@@ -3,20 +3,32 @@ import React from "react";
 
 
 export default function DetailCard(props){
+    const [date, hour] = props.date.replace("Z", "").split("T");
 
     return(
 <div>
-    <button onClick={() => props.switch(props.id)}>Back to calls</button>
+    <button className="backBtn" onClick={() => props.switch(props.id)}>Back to calls</button>
+    <div className="detailCard">
     <h2>Call Details</h2>
-<p> Direction {props.direction}</p>
-<p>From {props.from} </p>
-<p>To {props.to}</p>
-<span>Type<p className={props.status}> {props.status}</p></span>
-<p>Duration {props.duration}s</p>
-<p>Date {props.date},{props.hour}</p>
-<p>Archived {props.archive?"Yes":"No"}</p>
-<p>{props.notes}</p>
-
+    <div className="detailDerection">
+<p> Direction</p>
+<p className={props.direction}> {props.direction}</p>
+</div>
+<div className="from">
+<p>From</p><p> {props.from} </p>
+</div>
+<div className="to">
+<p>To </p><p>{props.to}</p></div>
+<div className="type">
+<p>Type</p> <p className={props.status}> {props.status}</p></div>
+<div className="duration">
+<p>Duration</p> <p>{props.duration}s</p></div>
+<div className="dateDetail">
+<p>Date</p> <p>{date}, {hour}</p></div>
+<div className="archivedDetail">
+<p>Archived</p><p> {props.archive?"Yes":"No"}</p></div>
+<p className="notes">{props.notes}</p>
+</div>
 </div> 
 
 )

@@ -121,3 +121,75 @@ color: gray;
   display: flex;
   justify-content: end;
 }
+
+.detailDerection{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 20px;
+  border-bottom:0.1px solid rgb(197, 197, 197);
+
+}
+.from{
+     display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 20px;
+border-bottom:0.1px solid rgb(197, 197, 197);
+}
+
+.to{
+     display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 20px;
+  border-bottom:0.1px solid rgb(197, 197, 197);
+}
+.type{
+     display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 20px;
+  border-bottom:0.1px solid rgb(197, 197, 197);
+}
+.duration{
+     display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 20px;
+  border-bottom:0.1px solid rgb(197, 197, 197);
+}
+.dateDetail{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 20px;
+  border-bottom:0.1px solid rgb(197, 197, 197);
+}
+.archivedDetail{
+    display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 20px;
+  border-bottom:0.1px solid rgb(197, 197, 197);
+}
+
+.detailCard{
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.notes{
+  margin-left: 10px;
+}
+
+.backBtn{
+  margin-top: 15px;
+  margin-left: 10px;
+  border-radius: none 20px;
+  
+}
