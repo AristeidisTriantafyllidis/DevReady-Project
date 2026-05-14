@@ -3,7 +3,7 @@ import React from "react";
 
 
 export default function DetailCard(props){
-    const [date, hour] = props.date.replace("Z", "").split("T");
+    const [date, hour] = props.date?.replace("Z", "").split("T");
 
     return(
 <div>
