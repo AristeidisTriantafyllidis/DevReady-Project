@@ -1,10 +1,8 @@
 import React from "react";
 
-
-
 export default function DetailCard(props){
-    const [date, hour] = props.date?.replace("Z", "").split("T");
-
+     const [date, hour] = props.date?.replace("Z", "").split("T");
+    const notes=props.notes?.[0]?.content || "No notes available"
     return(
 <div>
     <button className="backBtn" onClick={() => props.switch(props.id)}>Back to calls</button>
@@ -27,7 +25,7 @@ export default function DetailCard(props){
 <p>Date</p> <p>{date}, {hour}</p></div>
 <div className="archivedDetail">
 <p>Archived</p><p> {props.archive?"Yes":"No"}</p></div>
-<p className="notes">{props.notes}</p>
+<p>{notes}</p>
 </div>
 </div> 
 
