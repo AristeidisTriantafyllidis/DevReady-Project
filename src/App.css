@@ -35,7 +35,7 @@ h3{
  display: flex;
  flex-direction: column;
  gap: 7px;
- margin-right: 20px;
+ margin-right: 50px;
 }
 
 .inbound{
@@ -93,6 +93,7 @@ h3{
   margin-left: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .from{
@@ -191,5 +192,12 @@ border-bottom:0.1px solid rgb(197, 197, 197);
   margin-top: 15px;
   margin-left: 10px;
   border-radius: none 20px;
-  
+  cursor: pointer;
+}
+
+.loading{
+  display: flex;
+  align-items: center;
+justify-content:center;
+flex-direction: column;
 }
