@@ -10,8 +10,8 @@ function App() {
   const [loading, setLoading] = React.useState(true)
   const [display, setDisplay] = React.useState(true)
   const [selectedCall, setSelectedCall] = React.useState(null)
-  const [identification,setIdentification]=React.useState(null)
-  const [checkboxes,setCheckBoxes]=React.useState({})
+  const [identification, setIdentification] = React.useState(null)
+  const [checkboxes, setCheckBoxes] = React.useState({})
 
   React.useEffect(() => {
     fetch("https://call-center-mu.vercel.app/calls", {
@@ -26,8 +26,12 @@ function App() {
         setLoading(false)
         })
 
-//catch
+// .catch(err => {
+//   console.error(err);
+//   setLoading(false);
+
   }, []) 
+
 
   React.useEffect(() => {
   
@@ -54,7 +58,7 @@ function App() {
 
   function deleteCall(id) {
     const updateCalls = allCalls?.calls?.filter((item) => item.id !== id);
-    //const updateCalls = allCalls?.calls?.find((item) => item.id == id);
+   
     setAllCalls({ ...allCalls, calls: updateCalls, });
     fetch(`https://call-center-mu.vercel.app/calls/${id}/archive`, {
       method: "PATCH",
@@ -67,14 +71,10 @@ function App() {
     })
 
   }
-  // if(checkboxes.missed){
-//   if(allCalls.calls.call_type==="missed"){
-
-//}
-// }
+  
 
   const Main = allCalls?.calls?.map((data) => {
-    console.log("cae")
+    
    if(Object.keys(checkboxes).length === 0 && checkboxes.constructor === Object){
     return (
       <MainCard
@@ -134,7 +134,7 @@ function App() {
   }
 
 
-//{"name":"missed","value":true},"name":"answered","value":true},"name":"missed","value":true}
+
 function handleChange(e){
   const target=e.target
   const value=target.checked
@@ -142,9 +142,6 @@ function handleChange(e){
 setCheckBoxes(values=>({...values,[name]:value}))
 }
 
-console.log(allCalls)
-
-console.log(checkboxes)
   return (
     <div className="App">
       <Header />
