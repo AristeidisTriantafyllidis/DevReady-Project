@@ -26,5 +26,6 @@ await userEvent.click(Btn)
 expect(deleteCall).toHaveBeenCalledTimes(1)
 await userEvent.click(Btn)
 expect(deleteCall).toHaveBeenCalledTimes(2)
+
 })
 

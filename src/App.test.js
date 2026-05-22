@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from './App';
-import MainCard from './Components/MainCard';
+import MainCard from './Components/MainCard/MainCard';
+import DetailCard from './Components/DetailCard/DetailCard';
 
 
 test('renders call center header', () => {
@@ -49,5 +50,42 @@ fetch.mockResolvedValue({
   })
 })
 
+/////////////////////////////////////// 2nd way
+// beforeEach(()=>{
+// global.fetch = jest.fn()
+
+// })
+// afterEach(()=>{
+//     jest.resetAllMocks()
+// })
+
+test("Renders calls tropos 2",async ()=>{
+
+
+global.fetch.mockResolvedValueOnce({
+    json: async()=>({  calls:[
+        {
+        "id": "1",
+        "direction": "inbound",
+        "from": "+33 6 12 34 56 78",
+        "to": "+33 1 23 45 67 89",
+        "call_type": "answered",
+        "duration": 120,
+        "is_archived": false,
+        "created_at": "2025-04-10T14:32:00Z"
+    }
+  ]
+
+    })
+})
+render(<App
+/>)
+
+await waitFor(()=> {
+expect(screen.getByText("+33 6 12 34 56 78")).toBeInTheDocument();
+
+})
+
+})
 
 

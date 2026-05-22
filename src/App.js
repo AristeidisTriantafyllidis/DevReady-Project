@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Header';
-import MainCard from './Components/MainCard';
-import DetailCard from './Components/DetailCard';
+import MainCard from './Components/MainCard/MainCard';
+import DetailCard from './Components/DetailCard/DetailCard';
 import LoadingPage from './LoadingErrors/LoadingPage';
 
 function App() {
