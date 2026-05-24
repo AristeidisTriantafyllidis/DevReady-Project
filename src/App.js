@@ -109,9 +109,7 @@ function App() {
     );
   }
 
-
   let page;
-
   if (loading) {
     page = <LoadingPage />;
   }
