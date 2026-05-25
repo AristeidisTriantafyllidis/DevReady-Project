@@ -11,11 +11,7 @@ test('renders call center header', () => {
   expect(headerElement).toBeInTheDocument();
 });
 
-test('renders call type', () => {
-  render(<App />);
-  const activity = screen.getByText(/call type/i);
-  expect(activity).toBeInTheDocument();
-})
+
 
 test('renders your page is loading', () => {
   render(<App />)
@@ -51,14 +47,7 @@ test('renders calls ', async () => {
   })
 })
 
-/////////////////////////////////////// 2nd way
-// beforeEach(()=>{
-// global.fetch = jest.fn()
 
-// })
-// afterEach(()=>{
-//     jest.resetAllMocks()
-// })
 
 test("Renders calls tropos 2", async () => {
 

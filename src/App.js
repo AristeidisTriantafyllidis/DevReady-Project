@@ -25,15 +25,11 @@ function App() {
         setAllCalls(data);
         setLoading(false)
       })
-
-
   }, [])
 
 
   React.useEffect(() => {
-
     if (identification !== null) {
-
       fetch(`https://call-center-mu.vercel.app/calls/${identification}`, {
         headers: {
           "X-User-Id": "Ariss"
@@ -43,7 +39,6 @@ function App() {
         .then(data => {
           setSelectedCall(data)
         })
-
     }
   }, [identification])
 
@@ -67,7 +62,6 @@ function App() {
         is_archived: true
       })
     })
-
   }
 
 
