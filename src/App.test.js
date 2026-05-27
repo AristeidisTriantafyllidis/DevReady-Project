@@ -71,7 +71,7 @@ test("Renders calls tropos 2", async () => {
   />)
 
   await waitFor(() => {
-    expect(screen.getByText("+33 6 12 34 56 78sss")).toBeInTheDocument();
+    expect(screen.getByText("+33 6 12 34 56 78")).toBeInTheDocument();
 
   })
 

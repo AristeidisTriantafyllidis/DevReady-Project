@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Header';
-import MainCard from './Components/MainCard/MainCard';
-import DetailCard from './Components/DetailCard/DetailCard';
+import Header from './components/Header';
+import MainCard from './components/MainCard/MainCard';
+import DetailCard from './components/DetailCard/DetailCard';
 import LoadingPage from './LoadingErrors/LoadingPage';
 import ErrorPage from './LoadingErrors/ErrorPage';
 
