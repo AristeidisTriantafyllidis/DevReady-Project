@@ -12,7 +12,7 @@ function App() {
   const [display, setDisplay] = React.useState(true)
   const [selectedCall, setSelectedCall] = React.useState(null)
   const [identification, setIdentification] = React.useState(null)
-  const [pageError,setPageError]=React.useState(false)
+  const [pageError, setPageError] = React.useState(false)
 
   React.useEffect(() => {
     fetch("https://call-center-mu.vercel.app/calls", {
@@ -20,14 +20,14 @@ function App() {
         "X-User-Id": "Aris"
       }
     })
-
+      
       .then(res => res.json())
       .then(data => {
         setAllCalls(data);
         setLoading(false)
       })
-      .catch(error=>{
-        console.log(error)
+
+      .catch(error => {
         setLoading(false)
         setPageError(true)
       })
@@ -38,17 +38,16 @@ function App() {
     if (identification !== null) {
       fetch(`https://call-center-mu.vercel.app/calls/${identification}`, {
         headers: {
-          "X-User-Id": "Ariss"
+          "X-User-Id": "Aris"
         }
       })
         .then(res => res.json())
         .then(data => {
           setSelectedCall(data)
         })
-         .catch(error=>{
-        console.log(error)
-        setPageError(true)
-      })
+        .catch(error => {
+          setPageError(true)
+        })
     }
   }, [identification])
 
@@ -66,14 +65,13 @@ function App() {
     fetch(`https://call-center-mu.vercel.app/calls/${id}/archive`, {
       method: "PATCH",
       headers: {
-        "X-User-Id": "Ariss"
+        "X-User-Id": "Aris"
       },
       body: JSON.stringify({
         is_archived: true
       })
     })
-     .catch(error=>{
-        console.log(error)
+      .catch(error => {
         setPageError(true)
       })
   }
@@ -121,8 +119,8 @@ function App() {
   if (loading) {
     page = <LoadingPage />;
   }
-  else if(pageError === true){
-    page = <ErrorPage/>
+  else if (pageError === true) {
+    page = <ErrorPage />
   }
   else if (display === true) {
     page = (

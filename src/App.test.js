@@ -1,8 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from './App';
-import MainCard from './Components/MainCard/MainCard';
-import DetailCard from './Components/DetailCard/DetailCard';
 
 
 test('renders call center header', () => {
