@@ -3,11 +3,11 @@ The call management interface provides a centralized, fully responsive platform 
  <br/>
 ### 🛠️ Tech Stack & Tools
 * ⚛️ **React**
-🟨 **JavaScript**
-🟦 **CSS3**
+* 🟨 **JavaScript**
+* 🟦 **CSS3**
 * 🗲 **Git & GitHub**
-* * ▲ **Vercel**
-* 🃏 **Jest Testing **
+* 🚀 **Vercel**
+* 🃏 Jest Testing 
 
 ### 🚀 Live Deployment
 The project is fully deployed and available to view live:
