@@ -47,7 +47,7 @@ test('renders calls ', async () => {
 
 
 
-test("Renders calls tropos 2", async () => {
+test("Renders calls second", async () => {
 
 
   global.fetch.mockResolvedValueOnce({

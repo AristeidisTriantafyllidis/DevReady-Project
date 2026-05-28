@@ -20,8 +20,12 @@ function App() {
         "X-User-Id": "Aris"
       }
     })
-      
-      .then(res => res.json())
+
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+      })
       .then(data => {
         setAllCalls(data);
         setLoading(false)
@@ -41,7 +45,11 @@ function App() {
           "X-User-Id": "Aris"
         }
       })
-        .then(res => res.json())
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          }
+        })
         .then(data => {
           setSelectedCall(data)
         })
@@ -60,17 +68,25 @@ function App() {
 
   function deleteCall(id) {
     const updateCalls = allCalls?.calls?.filter((item) => item.id !== id);
-    setAllCalls({ ...allCalls, calls: updateCalls, });
+
 
     fetch(`https://call-center-mu.vercel.app/calls/${id}/archive`, {
       method: "PATCH",
       headers: {
         "X-User-Id": "Aris"
       },
+
       body: JSON.stringify({
         is_archived: true
       })
+
     })
+      .then((res) => {
+        if (res.ok) {
+          setAllCalls({ ...allCalls, calls: updateCalls, });
+        }
+      })
+
       .catch(error => {
         setPageError(true)
       })
