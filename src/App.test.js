@@ -36,6 +36,7 @@ test('renders calls ', async () => {
     ]
   };
   fetch.mockResolvedValue({
+    ok:true,
     json: () => Promise.resolve(mockData)
   })
   render(<App />)
@@ -51,6 +52,7 @@ test("Renders calls second", async () => {
 
 
   global.fetch.mockResolvedValueOnce({
+    ok:true,
     json: async () => ({
       calls: [
         {
