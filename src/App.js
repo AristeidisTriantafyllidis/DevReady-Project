@@ -1,100 +1,92 @@
-import React from 'react';
-import './App.css';
-import Header from './components/Header';
-import MainCard from './components/MainCard/MainCard';
-import DetailCard from './components/DetailCard/DetailCard';
-import LoadingPage from './LoadingErrors/LoadingPage';
-import ErrorPage from './LoadingErrors/ErrorPage';
+import React from "react";
+import "./App.css";
+import Header from "./components/Header";
+import MainCard from "./components/MainCard/MainCard";
+import DetailCard from "./components/DetailCard/DetailCard";
+import LoadingPage from "./LoadingErrors/LoadingPage";
+import ErrorPage from "./LoadingErrors/ErrorPage";
 
 function App() {
   const [allCalls, setAllCalls] = React.useState(null);
-  const [loading, setLoading] = React.useState(true)
-  const [display, setDisplay] = React.useState(true)
-  const [selectedCall, setSelectedCall] = React.useState(null)
-  const [identification, setIdentification] = React.useState(null)
-  const [pageError, setPageError] = React.useState(false)
+  const [loading, setLoading] = React.useState(true);
+  const [display, setDisplay] = React.useState(true);
+  const [selectedCall, setSelectedCall] = React.useState(null);
+  const [identification, setIdentification] = React.useState(null);
+  const [pageError, setPageError] = React.useState(false);
 
   React.useEffect(() => {
     fetch("https://call-center-mu.vercel.app/calls", {
       headers: {
-        "X-User-Id": "Aris"
-      }
+        "X-User-Id": "Aris",
+      },
     })
-
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
       })
-      .then(data => {
+      .then((data) => {
         setAllCalls(data);
-        setLoading(false)
+        setLoading(false);
       })
 
-      .catch(error => {
-        setLoading(false)
-        setPageError(true)
-      })
-  }, [])
-
+      .catch((error) => {
+        setLoading(false);
+        setPageError(true);
+      });
+  }, []);
 
   React.useEffect(() => {
     if (identification !== null) {
       fetch(`https://call-center-mu.vercel.app/calls/${identification}`, {
         headers: {
-          "X-User-Id": "Aris"
-        }
+          "X-User-Id": "Aris",
+        },
       })
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
-            return res.json()
+            return res.json();
           }
         })
-        .then(data => {
-          setSelectedCall(data)
+        .then((data) => {
+          setSelectedCall(data);
         })
-        .catch(error => {
-          setPageError(true)
-        })
+        .catch((error) => {
+          setPageError(true);
+        });
     }
-  }, [identification])
-
+  }, [identification]);
 
   function toggleScreen(id) {
-    setDisplay(!display)
-    setIdentification(id)
+    setDisplay(!display);
+    setIdentification(id);
   }
-
 
   function deleteCall(id) {
     const updateCalls = allCalls?.calls?.filter((item) => item.id !== id);
 
-
     fetch(`https://call-center-mu.vercel.app/calls/${id}/archive`, {
       method: "PATCH",
       headers: {
-        "X-User-Id": "Aris"
+        "X-User-Id": "Aris",
       },
 
       body: JSON.stringify({
-        is_archived: true
-      })
-
+        is_archived: true,
+      }),
     })
       .then((res) => {
         if (res.ok) {
-          setAllCalls({ ...allCalls, calls: updateCalls, });
+          setAllCalls({ ...allCalls, calls: updateCalls });
         }
       })
 
-      .catch(error => {
-        setPageError(true)
-      })
+      .catch((error) => {
+        setPageError(true);
+      });
   }
 
-
   const Main = allCalls?.calls?.map((data) => {
-
     return (
       <MainCard
         key={data.id}
@@ -109,10 +101,9 @@ function App() {
         switch={toggleScreen}
       />
     );
-
   });
 
-  let Detail = null
+  let Detail = null;
   if (selectedCall !== null) {
     Detail = (
       <DetailCard
@@ -134,31 +125,23 @@ function App() {
   let page;
   if (loading) {
     page = <LoadingPage />;
-  }
-  else if (pageError === true) {
-    page = <ErrorPage />
-  }
-  else if (display === true) {
+  } else if (pageError === true) {
+    page = <ErrorPage />;
+  } else if (display === true) {
     page = (
       <div>
         <h3>Activity feed</h3>
         {Main}
       </div>
     );
-  }
-  else {
+  } else {
     page = Detail;
   }
 
-
-
-
   return (
-
     <div className="App">
       <Header />
       {page}
-
     </div>
   );
 }
