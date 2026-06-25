@@ -5,7 +5,11 @@ import MainCard from "./components/MainCard/MainCard";
 import DetailCard from "./components/DetailCard/DetailCard";
 import LoadingPage from "./LoadingErrors/LoadingPage";
 import ErrorPage from "./LoadingErrors/ErrorPage";
-
+import {
+  fetchData,
+  fetchSpecificData,
+  updateDeleteCalls,
+} from "./services/api";
 function App() {
   const [allCalls, setAllCalls] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -15,16 +19,7 @@ function App() {
   const [pageError, setPageError] = React.useState(false);
 
   React.useEffect(() => {
-    fetch("https://call-center-mu.vercel.app/calls", {
-      headers: {
-        "X-User-Id": "Aris",
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
+    fetchData()
       .then((data) => {
         setAllCalls(data);
         setLoading(false);
@@ -38,16 +33,7 @@ function App() {
 
   React.useEffect(() => {
     if (identification !== null) {
-      fetch(`https://call-center-mu.vercel.app/calls/${identification}`, {
-        headers: {
-          "X-User-Id": "Aris",
-        },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-        })
+      fetchSpecificData(identification)
         .then((data) => {
           setSelectedCall(data);
         })
@@ -65,16 +51,7 @@ function App() {
   function deleteCall(id) {
     const updateCalls = allCalls?.calls?.filter((item) => item.id !== id);
 
-    fetch(`https://call-center-mu.vercel.app/calls/${id}/archive`, {
-      method: "PATCH",
-      headers: {
-        "X-User-Id": "Aris",
-      },
-
-      body: JSON.stringify({
-        is_archived: true,
-      }),
-    })
+    updateDeleteCalls(id)
       .then((res) => {
         if (res.ok) {
           setAllCalls({ ...allCalls, calls: updateCalls });
